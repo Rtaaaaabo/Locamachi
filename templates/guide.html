@@ -1,0 +1,15 @@
+<ion-view view-title="ガイド">
+  <ion-content style="position: relative; top: 50px">
+    <ion-list>
+      <ion-item ng-repeat="item in items"
+                item="item"
+                ui-sref="guide.{{item.id}}"
+                class="item-icon-right menu-item dark"
+                ng-style="{'background-image' : 'url(/' + item.background + ')'}">
+        <div class='item-title'>{{item.title}}</div><br />
+        <div class='item-subtitle'>{{item.subtitle}}</div>
+        <i class="icon ion-chevron-right"></i>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

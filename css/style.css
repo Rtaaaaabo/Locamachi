@@ -1,0 +1,15 @@
+body {
+    cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+.item-title {
+    text-transform : uppercase;
+    font-size : 30px;
+    letter-spacing : 1px;
+    font-family : 'Open Sans', sans-serif;
+    font-weight : 400px;
+}
+.item-subtitle {
+    text-transform: initial;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+}
