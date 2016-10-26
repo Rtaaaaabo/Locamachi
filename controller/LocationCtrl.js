@@ -2,8 +2,13 @@ angular.module('app.locationTabController', [])
 
 .controller('LocationTabCtrl', function($scope) {
   $scope.active_content = 'cafe';
+  initialize('cafe')
   $scope.setActiveContent = function(active_content) {
     $scope.active_content = active_content;
+    initialize(active_content);
+  }
+
+  function initialize (category) {
     var myLatlng = new google.maps.LatLng(35.630442, 139.882951);
     var mapOptions = {
       zoom : 15,
@@ -16,7 +21,7 @@ angular.module('app.locationTabController', [])
     service.nearbySearch({
       location : myLatlng,
       radius : 2000,
-      types : [$scope.active_content]
+      types : [category]
     }, callback);
     function callback (results, status) {
       if(status === google.maps.places.PlacesServiceStatus.OK) {
@@ -36,6 +41,6 @@ angular.module('app.locationTabController', [])
         infowindow.open(map, marker);
       })*/
     };
-      console.log($scope.active_content);
+    console.log($scope.active_content);
   }
-})
+    })
