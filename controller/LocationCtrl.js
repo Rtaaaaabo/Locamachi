@@ -16,7 +16,7 @@ angular.module('app.locationTabController', [])
       mapTypeId : google.maps.MapTypeId.ROADMAP
     };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-    //var infowindow = new google.maps.InfoWindow();
+    var infowindow = new google.maps.InfoWindow();
     var service = new google.maps.places.PlacesService(map);
     service.nearbySearch({
       location : myLatlng,
@@ -36,10 +36,10 @@ angular.module('app.locationTabController', [])
         map : map,
         position : place.geometry.location
       });
-      /*google.maps.event.addListener(marker, 'click', function() {
+      google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(place.name);
         infowindow.open(map, marker);
-      })*/
+      })
     };
     console.log($scope.active_content);
   }
