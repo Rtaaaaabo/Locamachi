@@ -114,5 +114,13 @@ angular.module('app.routes', [])
       }
     }
   })
+  .state('more.signUp', {
+    url : '/signUp',
+    views : {
+      'more-tab@tabs' : {
+        templateUrl : "templates/signUp.html"
+      }
+    }
+  })
   $urlRouterProvider.otherwise("/tab/location");
 })

@@ -9,7 +9,7 @@ angular.module('app.locationTabController', [])
   }
 
   function initialize (category) {
-    var myLatlng = new google.maps.LatLng(35.630442, 139.882951);
+    var myLatlng = new google.maps.LatLng(35.681298, 139.766247);
     var mapOptions = {
       zoom : 15,
       center : myLatlng,
@@ -31,16 +31,49 @@ angular.module('app.locationTabController', [])
       }
     }
     function createMarker(place) {
+      var latlng = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
       var placeLoc = place.geometry.location;
       var marker = new google.maps.Marker({
         map : map,
-        position : place.geometry.location
+        position : place.geometry.location,
       });
       google.maps.event.addListener(marker, 'click', function() {
         infowindow.setContent(place.name);
         infowindow.open(map, marker);
+        calcRoute(latlng);
       })
-    };
+    }
+    function calcRoute(latlng) {
+      rendererOptions = {
+        draggable : false,
+        preserveViewport : true
+      };
+      var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+      directionsDisplay.suppressMarkers = true;
+      var directionsService = new google.maps.DirectionsService();
+      google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+        computeTotalDistance(directionsDisplay.directions); //総距離合計
+      });
+      var request = {
+        origin : myLatlng,
+        destination : latlng,
+        travelMode : google.maps.DirectionsTravelMode.WALKING,  //徒歩モード
+        optimizeWaypoints : true,         //最適された最短距離にする
+      };
+      directionsService.route(request, function(response, status) {
+        if(status == google.maps.DirectionsStatus.OK){
+          directionsDisplay.setDirections(response);
+        }
+      });
+    }
+    function computeTotalDistance(result) {
+      total = 0;
+      var myroute = result.routes[0];
+      for (i=0; i<myroute.legs.length; i++) {
+        total += myroute.legs[i].distance.value;
+      }
+      total = total / 1000.
+    }
     console.log($scope.active_content);
   }
     })
