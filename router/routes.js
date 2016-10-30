@@ -33,19 +33,27 @@ angular.module('app.routes', [])
       }
     }
   })
-  .state('guide.0', {
-    url : '/mirin',
+  .state('guide.id', {
+    url : '/:id',
     views : {
-      'guide-tab@tabs': {
-        templateUrl : "templates/mirin.html"
+      'guide-tab@tabs' : {
+        templateUrl : "templates/person-detail.html"
       }
     }
   })
-  .state('guide.1', {
+  .state('guide.0', {
+    url : '/0',
+    views : {
+      'guide-tab@tabs': {
+        templateUrl : "templates/0.html"
+      }
+    }
+  })
+  /*.state('guide.1', {
     url : '/risa',
     views : {
       'guide-tab@tabs': {
-        templateUrl : "templates/risa.html"
+        templateUrl : "templates/1.html"
       }
     }
   })
@@ -53,7 +61,7 @@ angular.module('app.routes', [])
     url : '/nemu',
     views : {
       'guide-tab@tabs' : {
-        templateUrl : "templates/nemu.html"
+        templateUrl : "templates/2.html"
       }
     }
   })
@@ -61,7 +69,7 @@ angular.module('app.routes', [])
     url : '/eimi',
     views : {
       'guide-tab@tabs' : {
-        templateUrl : "templates/eimi.html"
+        templateUrl : "templates/3.html"
       }
     }
   })
@@ -69,7 +77,7 @@ angular.module('app.routes', [])
     url : '/moga',
     views : {
       'guide-tab@tabs' : {
-        templateUrl : "templates/moga.html"
+        templateUrl : "templates/4.html"
       }
     }
   })
@@ -77,10 +85,10 @@ angular.module('app.routes', [])
     url : '/ayane',
     views : {
       'guide-tab@tabs' : {
-      templateUrl : "templates/ayane.html"
+      templateUrl : "templates/5.html"
       }
     }
-  })
+  })*/
   .state('more', {
     url : '/more',
     parent : "tabs",

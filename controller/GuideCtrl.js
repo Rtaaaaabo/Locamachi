@@ -1,14 +1,6 @@
 angular.module('app.guideTabController', [])
 
 .controller('GuideTabCtrl', function($scope){
-  $scope.moredata = false;
-  $scope.loadMoreData = function() {
-    $scope.items.push({title: $scope.items.length});
-    if($scope.items.length==100){
-      $scope.moredata = true;
-    }
-    $scope.$broadcast('scroll.infiniteScrollComplete');
-  };
     $scope.items = [
     {
       id:0,
@@ -41,4 +33,16 @@ angular.module('app.guideTabController', [])
       subtitle : '踊ってみたら七変化！'
     }
   ];
+  $scope.moredata = false;
+  $scope.loadMoreData = function() {
+    $scope.items.push({
+      id: $scope.items.length,
+      title: $scope.items.length,
+      subtitle : $scope.items.length
+    });
+    if($scope.items.length==100){
+      $scope.moredata = true;
+    }
+    $scope.$broadcast('scroll.infiniteScrollComplete');
+  };
 })
