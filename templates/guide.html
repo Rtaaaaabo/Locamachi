@@ -2,7 +2,8 @@
   <ion-content class="has-header">
     <ion-list>
       <ion-item ng-repeat="item in items" item="item" ui-sref="guide.{{item.id}}" >
-        {{item.title}}
+        <h2>{{item.title}}</h2>
+        <p>{{item.subtitle}}</p>
       </ion-item>
       <ion-infinite-scroll distance = "2%"
                             on-infinite="loadMoreData()"
