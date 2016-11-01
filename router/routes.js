@@ -1,4 +1,8 @@
 angular.module('app.routes', [])
+.config(function($ionicConfigProvider) {
+  $ionicConfigProvider.backButton.previousTitleText(false);
+  $ionicConfigProvider.backButton.text(null);
+})
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
