@@ -1,4 +1,5 @@
 angular.module('app.routes', [])
+
 .config(function($ionicConfigProvider) {
   $ionicConfigProvider.backButton.previousTitleText(false);
   $ionicConfigProvider.backButton.text(null);
@@ -37,15 +38,16 @@ angular.module('app.routes', [])
       }
     }
   })
-  .state('guide.id', {
-    url : '/:id',
+  .state('detail', {
+    url : '/guide/:guideId',
+    parent : "tabs",
     views : {
       'guide-tab@tabs' : {
         templateUrl : "templates/person-detail.html"
       }
     }
   })
-  .state('guide.0', {
+  /*.state('guide.0', {
     url : '/0',
     views : {
       'guide-tab@tabs': {
@@ -53,7 +55,7 @@ angular.module('app.routes', [])
       }
     }
   })
-  /*.state('guide.1', {
+  .state('guide.1', {
     url : '/risa',
     views : {
       'guide-tab@tabs': {

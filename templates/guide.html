@@ -1,9 +1,11 @@
 <ion-view view-title="ガイド">
   <ion-content class="has-header">
     <ion-list>
-      <ion-item ng-repeat="item in items" item="item" ui-sref="guide.{{item.id}}" >
+      <ion-item class="item-thumbnail-left item-icon-right" ng-repeat="item in items" item="item" href="#/tab/guide/{{item.id}}" >
+        <img ng-src="{{item.image}}">
         <h2>{{item.title}}</h2>
         <p>{{item.subtitle}}</p>
+        <i class="icon ion-chevron-right"></i>
       </ion-item>
       <ion-infinite-scroll distance = "2%"
                             on-infinite="loadMoreData()"
