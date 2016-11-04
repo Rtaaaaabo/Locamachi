@@ -43,7 +43,8 @@ angular.module('app.routes', [])
     parent : "tabs",
     views : {
       'guide-tab@tabs' : {
-        templateUrl : "templates/person-detail.html"
+        templateUrl : "templates/person-detail.html",
+        controller : "DetailCtrl"
       }
     }
   })

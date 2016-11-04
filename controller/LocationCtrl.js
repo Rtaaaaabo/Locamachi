@@ -1,4 +1,4 @@
-angular.module('app.locationTabController', [])
+angular.module('app.locationCtrl', [])
 
 .controller('LocationTabCtrl', function($scope) {
   $scope.active_content = 'cafe';

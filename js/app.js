@@ -5,7 +5,7 @@
 // the 2nd parameter is array of 'requires'
 // 'starter.controller' is fonund in service.js
 
-angular.module('myApp', ['ionic','app.locationTabController', 'app.guideTabController', 'app.routes'])
+angular.module('myApp', ['ionic','app.locationCtrl', 'app.guideCtrl','app.detailCtrl', 'app.routes', 'app.services'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
