@@ -13,7 +13,9 @@ angular.module('app.locationCtrl', [])
     var mapOptions = {
       zoom : 15,
       center : myLatlng,
-      mapTypeId : google.maps.MapTypeId.ROADMAP
+      mapTypeId : google.maps.MapTypeId.ROADMAP,
+      icon : 'http://waox.main.jp/maps/icon/car2.png',
+      draggable : true
     };
     var map = new google.maps.Map(document.getElementById("map"), mapOptions);
     var infowindow = new google.maps.InfoWindow();
@@ -30,6 +32,13 @@ angular.module('app.locationCtrl', [])
         }
       }
     }
+    rendererOptions = {
+      draggable : false,
+      preserveViewport : true
+    };
+    var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+    directionsDisplay.suppressMarkers = true;
+    var directionsService = new google.maps.directionsService();
     function createMarker(place) {
       var latlng = new google.maps.LatLng(place.geometry.location.lat(), place.geometry.location.lng());
       var placeLoc = place.geometry.location;
@@ -44,24 +53,18 @@ angular.module('app.locationCtrl', [])
       })
     }
     function calcRoute(latlng) {
-      rendererOptions = {
-        draggable : false,
-        preserveViewport : true
-      };
-      var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
-      directionsDisplay.suppressMarkers = true;
-      var directionsService = new google.maps.DirectionsService();
       google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
-        computeTotalDistance(directionsDisplay.directions); //総距離合計
-      });
+        computeTotalDistance(directionsDisplay.directions);
+      })
       var request = {
         origin : myLatlng,
         destination : latlng,
-        travelMode : google.maps.DirectionsTravelMode.WALKING,  //徒歩モード
-        optimizeWaypoints : true,         //最適された最短距離にする
+        travelMode : google.maps.DirectionsTravelMode.WALKING,    //walking directions
+        unitSystem : google.maps.DirectionsUnitSystem.METRIC,     //単位km表示
+        optimizeWaypoints : true,     //最適化された最短距離にする
       };
       directionsService.route(request, function(response, status) {
-        if(status == google.maps.DirectionsStatus.OK){
+        if(status == google.maps.DirectionsStatus.OK) {
           directionsDisplay.setDirections(response);
         }
       });
@@ -69,11 +72,10 @@ angular.module('app.locationCtrl', [])
     function computeTotalDistance(result) {
       total = 0;
       var myroute = result.routes[0];
-      for (i=0; i<myroute.legs.length; i++) {
+      for (i = 0; i < myroute.legs.length; i++) {
         total += myroute.legs[i].distance.value;
       }
-      total = total / 1000.
+      total = total / 1000
     }
-    console.log($scope.active_content);
   }
-    })
+})
