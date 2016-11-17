@@ -48,54 +48,6 @@ angular.module('app.routes', [])
       }
     }
   })
-  /*.state('guide.0', {
-    url : '/0',
-    views : {
-      'guide-tab@tabs': {
-        templateUrl : "templates/0.html"
-      }
-    }
-  })
-  .state('guide.1', {
-    url : '/risa',
-    views : {
-      'guide-tab@tabs': {
-        templateUrl : "templates/1.html"
-      }
-    }
-  })
-  .state('guide.2', {
-    url : '/nemu',
-    views : {
-      'guide-tab@tabs' : {
-        templateUrl : "templates/2.html"
-      }
-    }
-  })
-  .state('guide.3', {
-    url : '/eimi',
-    views : {
-      'guide-tab@tabs' : {
-        templateUrl : "templates/3.html"
-      }
-    }
-  })
-  .state('guide.4', {
-    url : '/moga',
-    views : {
-      'guide-tab@tabs' : {
-        templateUrl : "templates/4.html"
-      }
-    }
-  })
-  .state('guide.5', {
-    url : '/ayane',
-    views : {
-      'guide-tab@tabs' : {
-      templateUrl : "templates/5.html"
-      }
-    }
-  })*/
   .state('more', {
     url : '/more',
     parent : "tabs",
